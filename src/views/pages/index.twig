@@ -5,6 +5,56 @@
 | page.title       | string     | *could be html                                                      |
 | page.slug        | string     | ex: "cat.show"                                                      |
 #}
+<!-- واجهة البحث -->
+<div style="max-width: 400px; margin: auto; font-family: Arial;">
+  <h3 style="text-align: center;">🔍 بحث عن الجنط</h3>
+
+  <label>العرض:</label>
+  <select id="width">
+    <option value="">اختر</option>
+    <option value="205">205</option>
+    <option value="215">215</option>
+    <option value="225">225</option>
+  </select>
+
+  <label>الارتفاع:</label>
+  <select id="height">
+    <option value="">اختر</option>
+    <option value="55">55</option>
+    <option value="60">60</option>
+    <option value="65">65</option>
+  </select>
+
+  <label>الجنب:</label>
+  <select id="side">
+    <option value="">اختر</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+  </select>
+
+  <button onclick="searchRims()" style="margin-top: 10px;">بحث</button>
+
+  <div id="results" style="margin-top: 20px; background: #f9f9f9; padding: 10px;"></div>
+</div>
+
+<!-- كود JavaScript -->
+<script>
+  function searchRims() {
+    const width = document.getElementById("width").value;
+    const height = document.getElementById("height").value;
+    const side = document.getElementById("side").value;
+
+    if (!width || !height || !side) {
+      document.getElementById("results").innerHTML = "❗ يرجى اختيار جميع القيم.";
+      return;
+    }
+
+    // مثال على ناتج البحث (يمكن ربطه بقاعدة بيانات لاحقًا)
+    const resultText = `🔧 تم العثور على نتائج للجنط بمقاس: العرض ${width}، الارتفاع ${height}، الجنب ${side}`;
+    document.getElementById("results").innerHTML = resultText;
+  }
+</script>
 {% extends "layouts.master" %}
 {% block content %}
     {% component home %}
